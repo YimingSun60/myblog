@@ -2,11 +2,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/spf13/viper"
 	"net/http"
 )
 
-func readVariable() (string, string, string, string) {
+/*func readVariable() (string, string, string, string) {
 	viper.SetConfigName("default")
 	viper.SetConfigType("json")
 	viper.AddConfigPath("/etc")
@@ -19,10 +18,10 @@ func readVariable() (string, string, string, string) {
 	port := viper.GetString("server.port")
 	addr := viper.GetString("server.address")
 	return cer, key, port, addr
-}
+}*/
 
 func main() {
-	cer, key, port, addr := readVariable()
+	//cer, key, port, addr := readVariable()
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		n, err := fmt.Fprintf(w, "Hello world")
 		if err != nil {
@@ -30,11 +29,9 @@ func main() {
 		}
 		fmt.Printf("Number of bytes written: %d", n)
 	})
-	fmt.Println(addr)
-	err := http.ListenAndServe(port, nil)
+
+	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
-		fmt.Println(cer)
-		fmt.Println(key)
 		panic(fmt.Errorf("fatal error config file: %w", err))
 		return
 	}

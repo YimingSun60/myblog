@@ -9,7 +9,7 @@ import (
 func readVariable() (string, string, string, string) {
 	viper.SetConfigName("default")
 	viper.SetConfigType("json")
-	viper.AddConfigPath("/Users/sunyiming/myblog/config/")
+	viper.AddConfigPath("/etc")
 	err := viper.ReadInConfig() // Find and read the config file
 	if err != nil {             // Handle errors reading the config file
 		panic(fmt.Errorf("fatal error config file: %w", err))

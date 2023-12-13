@@ -1,8 +1,0 @@
-{
-  "server": {
-    "certificate": "/etc/server.pem",
-    "key": "/etc/server.key",
-    "port": ":443",
-    "address": "barrysun.me"
-  }
-}

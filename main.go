@@ -31,7 +31,7 @@ func main() {
 		fmt.Printf("Number of bytes written: %d", n)
 	})
 	fmt.Println(addr)
-	err := http.ListenAndServeTLS(port, cer, key, nil)
+	err := http.ListenAndServe(port, nil)
 	if err != nil {
 		fmt.Println(cer)
 		fmt.Println(key)

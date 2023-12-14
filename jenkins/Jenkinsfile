@@ -11,9 +11,11 @@ pipeline {
                 sh 'go build -o blog .'
             }
         }
-        sshagent(['ec2']) {
-            sh 'ls'
+        stage('Deploy') {
+            sshagent(['ec2']) {
+                sh 'ls'
             // some block
+            }
         }
     }
 }

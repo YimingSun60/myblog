@@ -10,20 +10,11 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'go build -o blogserver .'
-                script {
-                    sh 'ls -l' // Lists files in the current directory
-                    dir('build') {
-                        sh 'mv ../blogserver .'
-                         // Build the Go project
-                        sh 'ls -l' // Lists files in the 'build' directory after building
-                        sh 'readlink -f blogserver' // Get the full path of the built binary
-                    }
-                }
             }
         }
         stage('Deploy') {
             steps{
-                sshPublisher(publishers: [sshPublisherDesc(configName: 'ec2-54-234-185-179', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '~', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '**/blogserver')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'ec2-54-234-185-179', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: 'jenkins_build', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '**/blogserver')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
             }
         }
     }

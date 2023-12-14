@@ -8,7 +8,13 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'go build -o blogserver ./build'
+                node {
+                    sh 'ls -l'
+                    dir ('build') {
+                        sh 'go build -o blogserver .'
+                    }
+                    sh 'ls -l'
+                }
                 sh 'readlink -f blogserver'
             }
         }

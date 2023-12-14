@@ -10,6 +10,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'go build -o blogserver .'
+                sh 'rm -r build'
             }
         }
         stage('Deploy') {

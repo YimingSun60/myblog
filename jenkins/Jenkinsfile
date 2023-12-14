@@ -9,14 +9,14 @@ pipeline {
 
         stage('Build') {
             steps {
-            node('Output') {
-                    sh 'ls -l'
-                    dir ('build') {
-                        sh 'go build -o blogserver .'
+                node {
+                    sh 'ls -l' // Lists files in the current directory
+                    dir('build') {
+                        sh 'go build -o blogserver .' // Build the Go project
+                        sh 'ls -l' // Lists files in the 'build' directory after building
+                        sh 'readlink -f blogserver' // Get the full path of the built binary
                     }
-                    sh 'ls -l'
                 }
-                sh 'readlink -f blogserver'
             }
         }
         stage('Deploy') {

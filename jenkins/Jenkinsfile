@@ -9,10 +9,12 @@ pipeline {
 
         stage('Build') {
             steps {
+                sh 'go build -o blogserver .'
                 script {
                     sh 'ls -l' // Lists files in the current directory
                     dir('build') {
-                        sh 'go build -o blogserver .' // Build the Go project
+                        sh 'mv ../blogserver .'
+                         // Build the Go project
                         sh 'ls -l' // Lists files in the 'build' directory after building
                         sh 'readlink -f blogserver' // Get the full path of the built binary
                     }

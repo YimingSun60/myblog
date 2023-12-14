@@ -9,7 +9,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                node {
+                script {
                     sh 'ls -l' // Lists files in the current directory
                     dir('build') {
                         sh 'go build -o blogserver .' // Build the Go project

@@ -6,9 +6,10 @@ pipeline {
     }
 
     stages {
+       node {
         stage('Build') {
             steps {
-                node {
+
                     sh 'ls -l'
                     dir ('build') {
                         sh 'go build -o blogserver .'

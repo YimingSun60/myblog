@@ -15,7 +15,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'go build -o blog'
+                sh 'go build'
             }
         }
     }

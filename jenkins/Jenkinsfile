@@ -6,8 +6,12 @@ pipeline {
     }
 
     stages {
-
         stage('Build') {
+            environment {
+                        // Set the target OS and architecture
+                        GOOS   = 'linux'
+                        GOARCH = 'amd64'
+            }
             steps {
                 sh 'go build -o blogserver'
             }

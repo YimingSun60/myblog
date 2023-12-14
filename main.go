@@ -21,6 +21,7 @@ import (
 }*/
 
 func main() {
+	fmt.Println("Welcome")
 	//cer, key, port, addr := readVariable()
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		n, err := fmt.Fprintf(w, "Hello world")

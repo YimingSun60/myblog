@@ -9,7 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'go build -o blogserver .'
-                sh 'echo readlink -f blogserver'
+                sh 'readlink -f blogserver'
             }
         }
         stage('Deploy') {

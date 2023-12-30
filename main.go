@@ -14,7 +14,7 @@ func About(w http.ResponseWriter, r *http.Request) {
 	_, _ = fmt.Fprintf(w, fmt.Sprintf("This is the About page and 2 + 2 is %d", sum))
 }
 
-//第一个字母小写的函数是private
+// 第一个字母小写的函数是private
 func addValues(x, y int) int {
 	sum := x + y
 	return sum

@@ -6,6 +6,11 @@ pipeline {
     }
 
     stages {
+        stage('Kill Process'){
+            steps{
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'ec2-54-234-185-179', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'pgrep -f blogserver | xargs kill', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+            }
+        }
         stage('Build') {
             environment {
                         // Set the target OS and architecture
@@ -18,13 +23,12 @@ pipeline {
         }
         stage('Deploy') {
             steps{
-
                 sshPublisher(
                     publishers:[sshPublisherDesc(configName: 'ec2-54-234-185-179',
                     transfers:
                     [sshTransfer(cleanRemote: false,
                     excludes: '',
-                    execCommand: 'pgrep -f blogserver | xargs kill',
+                    execCommand: '',
                     execTimeout: 120000,
                     flatten: false,
                     makeEmptyDirs: false,

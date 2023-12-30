@@ -6,17 +6,46 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-
+    <link href="css/bootstrap.css" rel="stylesheet" crossorigin="anonymous">
 </head>
 <body>
-<!--Horizontal rule-->
-<hr/>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <img src="assets/Usagi_main.webp" alt="Logo" width="60" height="60" class="d-inline-block align-text-top">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link" href="#">About</a>
+                <a class="nav-link" href="#">Content</a>
+            </div>
+        </div>
+    </div>
+</nav>
 <h1> This is the home page</h1>
 <p>
     <!--break element example-->
     Some contents<br/>
     New line
 </p>
+
+<div class="container">
+    <!-- Content here -->
+    <div class="row">
+        <div class="col-2">
+            hello
+        </div>
+        <div class="col-4">
+            world
+        </div>
+        <div class="col-6">
+            hello
+        </div>
+    </div>
+</div>
 
 
 </body>

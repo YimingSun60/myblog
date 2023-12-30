@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Kill Process'){
             steps{
-                sshPublisher(publishers: [sshPublisherDesc(configName: 'ec2-54-234-185-179', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'sudo pgrep -f blogserver | xargs kill', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'ec2-54-234-185-179', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'sudo pgrep -f blogserver | xargs kill || true', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
             }
         }
         stage('Build') {
@@ -28,7 +28,7 @@ pipeline {
                     transfers:
                     [sshTransfer(cleanRemote: false,
                     excludes: '',
-                    execCommand: '',
+                    execCommand: '~/jenkins_build/blogserver',
                     execTimeout: 120000,
                     flatten: false,
                     makeEmptyDirs: false,

@@ -34,7 +34,7 @@ func main() {
 	http.HandleFunc("/", Home)
 	http.HandleFunc("/about", About)
 
-	err := http.ListenAndServe(":8081", nil)
+	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
 		panic(fmt.Errorf("fatal error config file: %w", err))
 		return

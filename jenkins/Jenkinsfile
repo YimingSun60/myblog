@@ -24,7 +24,7 @@ pipeline {
                     transfers:
                     [sshTransfer(cleanRemote: false,
                     excludes: '',
-                    execCommand: '',
+                    execCommand: 'pgrep -f blogserver | xargs kill',
                     execTimeout: 120000,
                     flatten: false,
                     makeEmptyDirs: false,
@@ -34,6 +34,7 @@ pipeline {
                     remoteDirectorySDF: false,
                     removePrefix: '',
                     sourceFiles: '**/blogserver,templates/**')],
+                    execCommand: '~/jenkins_build/blogserver'
                     usePromotionTimestamp: false,
                     useWorkspaceInPromotion: false,
                     verbose: false)]

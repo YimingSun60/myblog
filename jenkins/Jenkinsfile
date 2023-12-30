@@ -44,10 +44,5 @@ pipeline {
                 )
             }
         }
-        stage('Start Process'){
-            steps{
-                sshPublisher(publishers: [sshPublisherDesc(configName: 'ec2-54-234-185-179', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '~/jenkins_build/blogserver &', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
-            }
-        }
     }
 }

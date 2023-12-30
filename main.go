@@ -6,7 +6,11 @@ import (
 )
 
 func Home(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "This is the Home page")
+	err := HomeHandler(w)
+	if err != nil {
+		panic(fmt.Errorf("fatal error config file: %w", err))
+		return
+	}
 }
 
 func About(w http.ResponseWriter, r *http.Request) {
@@ -20,12 +24,17 @@ func addValues(x, y int) int {
 	return sum
 }
 
+func HomeHandler(w http.ResponseWriter) error {
+	_, err := fmt.Fprintf(w, "This is the Home page")
+	return err
+}
+
 func main() {
 	fmt.Println("Start the service")
 	http.HandleFunc("/", Home)
 	http.HandleFunc("/about", About)
 
-	err := http.ListenAndServe(":8080", nil)
+	err := http.ListenAndServe(":8081", nil)
 	if err != nil {
 		panic(fmt.Errorf("fatal error config file: %w", err))
 		return

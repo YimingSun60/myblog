@@ -31,8 +31,11 @@ func HomeHandler(w http.ResponseWriter) error {
 
 func main() {
 	fmt.Println("Start the service")
-	http.HandleFunc("/", Home)
-	http.HandleFunc("/about", About)
+	//http.HandleFunc("/", Home)
+	//http.HandleFunc("/about", About)
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Println("hello, world")
+	})
 
 	err := http.ListenAndServe(":8080", nil)
 	if err != nil {

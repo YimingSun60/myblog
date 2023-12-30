@@ -28,7 +28,7 @@ pipeline {
                     transfers:
                     [sshTransfer(cleanRemote: false,
                     excludes: '',
-                    execCommand: '',
+                    execCommand: 'sudo systemctl start myblog.service',
                     execTimeout: 120000,
                     flatten: false,
                     makeEmptyDirs: false,

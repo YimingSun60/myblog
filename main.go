@@ -10,11 +10,14 @@ func Home(w http.ResponseWriter, r *http.Request) {
 }
 
 func About(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "This is the About page")
+	sum := addValues(2, 2)
+	_, _ = fmt.Fprintf(w, fmt.Sprintf("This is the About page and 2 + 2 is %d", sum))
 }
 
-func AddValues(x, y int) int {
-	return x + y
+//第一个字母小写的函数是private
+func addValues(x, y int) int {
+	sum := x + y
+	return sum
 }
 
 func main() {

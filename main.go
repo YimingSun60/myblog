@@ -21,6 +21,7 @@ func addValues(x, y int) int {
 }
 
 func main() {
+	fmt.Println("Start the service")
 	http.HandleFunc("/", Home)
 	http.HandleFunc("/about", About)
 

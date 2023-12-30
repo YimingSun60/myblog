@@ -33,7 +33,7 @@ pipeline {
                     remoteDirectory: 'jenkins_build',
                     remoteDirectorySDF: false,
                     removePrefix: '',
-                    sourceFiles: '**/blogserver')],
+                    sourceFiles: '**/blogserver,templates/**')],
                     usePromotionTimestamp: false,
                     useWorkspaceInPromotion: false,
                     verbose: false)]

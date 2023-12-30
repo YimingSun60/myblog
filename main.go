@@ -2,39 +2,33 @@ package main
 
 import (
 	"fmt"
+	"html/template"
 	"net/http"
 )
 
+const portNumber = ":8080"
+
 func Home(w http.ResponseWriter, r *http.Request) {
-	err := HomeHandler(w)
-	if err != nil {
-		panic(fmt.Errorf("fatal error config file: %w", err))
-		return
-	}
+	renderTemplate(w, "home.page.gohtml")
 }
 
 func About(w http.ResponseWriter, r *http.Request) {
-	sum := addValues(2, 2)
-	_, _ = fmt.Fprintf(w, fmt.Sprintf("This is the About page and 2 + 2 is %d", sum))
-}
 
-// 第一个字母小写的函数是private
-func addValues(x, y int) int {
-	sum := x + y
-	return sum
 }
-
-func HomeHandler(w http.ResponseWriter) error {
-	_, err := fmt.Fprintf(w, "This is the Home page")
-	return err
+func renderTemplate(w http.ResponseWriter, tmpl string) {
+	parsedTemplate, _ := template.ParseFiles("./templates/" + tmpl)
+	err := parsedTemplate.Execute(w, nil)
+	if err != nil {
+		panic(fmt.Errorf("error parsing template: %w", err))
+		return
+	}
 }
-
 func main() {
 	fmt.Println("Start the service")
 	http.HandleFunc("/", Home)
 	http.HandleFunc("/about", About)
 
-	err := http.ListenAndServe(":8080", nil)
+	err := http.ListenAndServe(portNumber, nil)
 	if err != nil {
 		panic(fmt.Errorf("fatal error config file: %w", err))
 		return

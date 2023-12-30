@@ -6,7 +6,7 @@ import (
 )
 
 const portNumber = ":8080"
-const assetsPath = "/assets/"
+const assetsPath = "assets/"
 
 func main() {
 	fmt.Println("Start the service")
